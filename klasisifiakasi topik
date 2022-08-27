@@ -1,0 +1,146 @@
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSION
+
+@app.route('/topik_admin', methods=['GET', 'POST'])
+def uploaddata2():
+    if request.method == 'GET':
+        return render_template('topik_admin.html')
+    
+    elif request.method == 'POST':
+        file = request.files['file']
+        
+        if 'file' not in request.files:
+            return redirect(request.url)
+
+        if file.filename == '':
+            return redirect(request.url)
+      
+
+        if file and allowed_file(file.filename):
+            file.filename = "sentimenttopic.csv"
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], file.filename))
+
+            text = pandas.read_csv('upload/sentimenttopic.csv', encoding='latin-1')
+         
+            return render_template('topik_admin.html',tables=[text.to_html()])
+            
+@app.route('/tfidftopic', methods=['GET', 'POST'])
+def tfidftopic():
+    text = pandas.read_csv('upload/sentimenttopic.csv', encoding='latin-1')
+    text.dropna(axis=0)
+    positif, negatif= text['label'].value_counts()
+    lainnya, pemerintahan, kesehatan, wisata= text['topik'].value_counts()
+    total = positif + negatif
+    jumlah = lainnya + pemerintahan + kesehatan + wisata
+    
+    return render_template ('tfidftopic_admin.html', total=total, positif=positif, negatif=negatif, jumlah=jumlah, lainnya=lainnya, pemerintahan=pemerintahan, kesehatan=kesehatan, wisata=wisata)
+
+def data(text):
+    text['topik'] = text['topik'].map({'lainnya': 1, 'pemerintahan': 2, 'kesehatan':3, 'wisata':4})
+    X = text['text']
+    y = text['topik']
+
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1, random_state=123)
+    return X_train, X_test, y_train, y_test
+
+
+@app.route('/tfidftopictest', methods=['GET', 'POST'])
+def tfidftopictest():
+    text = pandas.read_csv('upload/sentimenttopic.csv', encoding='latin-1')
+    text.dropna(axis=0)
+    positif, negatif= text['label'].value_counts()
+    lainnya, pemerintahan, kesehatan, wisata= text['topik'].value_counts()
+    total = positif + negatif
+    jumlah = lainnya + pemerintahan + kesehatan + wisata
+
+    X_train, X_test, y_train, y_test= data(text)
+    global str
+
+    vectorizer_topic = TfidfVectorizer(use_idf=False, lowercase=True)
+    X_train = vectorizer_topic.fit_transform(X_train)
+    X_test = vectorizer_topic.transform(X_test)
+
+    bow_vectorizer_topik = CountVectorizer()
+    X_train = bow_vectorizer_topik.fit_transform(text['text'])
+  
+    #Saving vectorizer to disk
+    pickle.dump(vectorizer_topic, open('upload/vectorizertopic.model','wb'))
+    pickle.dump(bow_vectorizer_topik, open('upload/bowtopik.model','wb'))
+
+    return render_template ('tfidftopic_admin.html', X_train=X_train, X_test=X_test, total=total, positif=positif, negatif=negatif, jumlah=jumlah, wisata=wisata, pemerintahan=pemerintahan, lainnya=lainnya, kesehatan=kesehatan)
+
+
+@app.route('/klasifikasitopik_admin', methods=['GET', 'POST'])
+def klasifikasitopik_admin():
+
+    return render_template ('klasifikasitopik_admin.html')
+
+
+@app.route('/klasifikasitopic', methods=['GET', 'POST'])
+def klasifikasitopic():
+    
+    # Loading model to compare the results
+    vectorizer_topic = pickle.load(open('upload/vectorizertopic.model','rb'))
+
+    text = pandas.read_csv('upload/sentimenttopic.csv', encoding='latin-1')
+
+    X_train, X_test, y_train, y_test = data(text)
+
+    vectorizer_topic = TfidfVectorizer()
+
+    X_train = vectorizer_topic.fit_transform(X_train)
+    X_test = vectorizer_topic.transform(X_test)
+
+    # Process of making models Klasifikasi SVM LINEAR
+    model_topic = MultinomialNB()
+    model_topic.fit(X_train,y_train)
+    model_predict_topic = model_topic.predict(X_test)
+
+    #Saving vectorizer to disk
+    pickle.dump(model_topic, open('upload/modeltopic.model','wb'))
+    from sklearn.metrics import f1_score, recall_score, precision_score, confusion_matrix, accuracy_score
+    # f1_score
+    f1_score_linear = f1_score(y_test, model_predict_topic, average='macro')
+    
+
+    # accuracy score
+    accuracy_score_linear = accuracy_score(y_test, model_predict_topic)
+   
+
+    # precision score
+    precision_score_linear = precision_score(y_test, model_predict_topic, average='macro')
+   
+
+    # recall score
+    recall_score_linear = recall_score(y_test, model_predict_topic, average='macro')
+    
+
+    # confusion matrix
+    
+   
+
+    return render_template ('klasifikasitopik_admin.html', f1_score_linear=f1_score_linear, accuracy_score_linear=accuracy_score_linear, precision_score_linear=precision_score_linear, recall_score_linear=recall_score_linear, 
+    )
+
+
+@app.route('/formtopik', methods=['GET', 'POST'])
+def formtopik():
+
+    return render_template ('testtopik.html')
+
+
+@app.route('/testtopic', methods=['GET', 'POST'])
+def testopic():
+    # Loading model to compare the results
+    model_predict_topic = pickle.load(open('upload/modeltopic.model','rb'))
+    vectorizer_topic = pickle.load(open('upload/vectorizertopic.model','rb'))
+
+    text = request.form['text']
+    original_text = request.form['text']
+
+    hasil = preprocess_data(text)
+    hasil2 = vectorizer_topic .transform([hasil])
+    # cek prediksi dari kalimat
+    final = model_predict_topic.predict(hasil2)
+    
+    return render_template ('testtopik.html', original_text=original_text, hasil=hasil, final=final)

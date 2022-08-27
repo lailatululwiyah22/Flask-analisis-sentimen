@@ -1,0 +1,337 @@
+{% include 'nav_admin.html' %}
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+        
+    </div>
+
+    <div class="row">
+
+        <!-- Illustrations -->
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Data Training</h6>
+            </div>
+            <div class="card-body">
+                <div class="text-center">
+                
+                    <div class="row">
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-primary shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                                Jumlah Tweet</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ jumlah }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-success shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Data positif</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ positif }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-book fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-info shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                            </div>
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col-auto">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                        Data Negatif</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ negatif }}</div>
+                                                </div>
+                                                <div class="col">
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+
+                    </div>
+
+
+                </div>
+                <p>===============================  
+                    ==============================================================================
+                    </p>
+                    <div class="row">
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                pemerintahan</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ pemerintahan }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-paper-plane fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                kesehatan</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ kesehatan }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-ribbon fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                wisata</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ wisata }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-place-of-worship fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-3 col-md-6 mb-4">
+                            <div class="card border-left-warning shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                                lainnya</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ lainnya }}</div>
+                                        </div>
+                                        <div class="col-auto">
+                                            <i class="fas fa-info fa-2x text-gray-300"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        
+
+                    </div>
+                
+            </div>
+        </div>
+
+    </div>
+
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Data testing, pengaduan dan berita</h6>
+        </div>
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-primary shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                        Klasfikasi sentimen</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ datas }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-success shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                        Klasfikasi Topik</div>
+                                    <div class="h5 mb-0 font-weight-bold text-gray-800">{{ datas2 }}</div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-book fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    </div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Data pengaduan</div>
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ pengaduan }}</div>
+                                        </div>
+                                        <div class="col">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-md-6 mb-4">
+                    <div class="card border-left-info shadow h-100 py-2">
+                        <div class="card-body">
+                            <div class="row no-gutters align-items-center">
+                                <div class="col mr-2">
+                                    <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    </div>
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col-auto">
+                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                                Data Berita</div>
+                                            <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ berita }}</div>
+                                        </div>
+                                        <div class="col">
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-auto">
+                                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+
+           
+        </div>
+    </div>
+
+    
+
+
+</div>
+
+  <!-- Footer -->
+  <footer class="sticky-footer bg-white">
+    <div class="container my-auto">
+        <div class="copyright text-center my-auto">
+            <span>Copyright &copy; SKRIPSI 2022</span>
+        </div>
+    </div>
+</footer>
+<!-- End of Footer -->
+
+</div>
+<!-- End of Content Wrapper -->
+
+</div>
+<!-- End of Page Wrapper -->
+
+<!-- Scroll to Top Button-->
+<a class="scroll-to-top rounded" href="#page-top">
+<i class="fas fa-angle-up"></i>
+</a>
+
+<!-- Logout Modal-->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+        </button>
+    </div>
+    <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+    <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        <a class="btn btn-primary" href="/logout">Logout</a>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- Bootstrap core JavaScript-->
+<script src="{{ url_for('static', filename= 'admin/vendor/jquery/jquery.min.js' ) }}"></script>
+<script src="{{ url_for('static', filename= 'admin/vendor/bootstrap/js/bootstrap.bundle.min.js' ) }}"></script>
+
+<!-- Core plugin JavaScript-->
+<script src="{{ url_for ('static', filename= 'admin/vendor/jquery-easing/jquery.easing.min.js' ) }}"></script>
+
+<!-- Custom scripts for all pages-->
+<script src="{{ url_for('static', filename='admin/js/sb-admin-2.min.js' ) }}"></script>
+
+<!-- Page level plugins -->
+<script src="{{ url_for('static', filename='admin/vendor/chart.js/Chart.min.js' ) }}"></script>
+
+<!-- Page level custom scripts -->
+<script src="{{ url_for('static', filename='admin/js/demo/chart-area-demo.js') }}"></script>
+<script src="{{ url_for('static', filename = 'admin/js/demo/chart-pie-demo.js' ) }}"></script>
+
+</body>
+
+</html>

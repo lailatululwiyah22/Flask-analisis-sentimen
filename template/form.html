@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ url_for('static' , filename='css/main.css') }}" rel="stylesheet" />
+    <link rel="shortcut icon" href="{{ url_for ('static', filename= 'favicon.png') }}">
+    <title>Form pengaduan</title>
+</head>
+<body id="page-top">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="">
+            <img src="{{ url_for('static', filename= 'img/logo.png') }}" width="50" height="50" class="d-inline-block align-top">
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link " data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" href="">Analisis sentiment</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="">Visualisasi</a>
+                        <a class="dropdown-item" href=""></a>
+                        <a class="dropdown-item" href=""></a>
+                    </div>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="">Tentang</a></li>
+                 <li class="nav-item"><a class="nav-link" href="">News</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section class="page-section" id="page-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            FORM PENGADUAN
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <hr>
+                        {% with messages = get_flashed_messages() %}
+ 
+                        {% if messages %}
+         
+                        {% for message in messages %}
+                        <div class="alert alert-success alert-dismissable" role="alert">
+ 
+                            <button type="button" class="close" data-dismiss="alert" aria-label="close">
+         
+                                <span aria-hidden="true">x</span>
+         
+                            </button>
+         
+         
+                        {{message}}
+                    </div>
+ 
+ 
+                    {% endfor %}
+     
+                    {% endif %}
+                    {% endwith %}
+                            <form action="" method="post" enctype="multipart/form-data" >
+                                
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="hidden" class="form-control" value="" name="id" id="" placeholder="No. pengaduan"  readonly>
+                                            
+                                            
+                                        </div>   
+                                    </div>
+                                </div>
+                               <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"  name="nama" placeholder="Masukan Nama" required>
+                                            
+                                        </div>   
+                                    </div>
+                                </div>
+
+                               
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"  name="telephone" placeholder="Masukan Nomor telephone" required>
+                                        </div>   
+                                    </div>
+                                </div>
+                                
+                                 <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"  name="alamat" placeholder="Masukan Alamat" required>
+                                        </div>   
+                                    </div>
+                                </div>
+                               
+
+                                <div class="row">
+                                <div class="col">
+                                    <div class="form-group">
+                                        <select class="form-control" name="tujuan" id="" required>
+                                            <option value="" selected disabled>Tujuan pengaduan</option>
+                                            <option value="Dinas kesehatan">Dinas kesehatan</option>
+                                            <option value="Dinas pawirisata">Dinas pawirisata</option>
+                                            
+                                            <option value="DPRD">DPRD</option>
+                                            <option value="sektor lainnya">Lainnya</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control"  name="opini" placeholder="Masukan Opini" required>
+                                        </div>   
+                                    </div>
+                                </div>
+
+                                <!--<div class="form-group">
+                                    <div class="col">
+                                        <p class="error"><em>* Catat Nomor Pengaduan Untuk Melihat Status Pengaduan</em></p>
+                                    </div>
+                                </div>-->
+                            
+                                <div class="mt-3">
+                                    <button class="btn btn-primary" value="">Submit</button>
+                                </div>
+                            </form>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                
+                <div class="card shadow mb-4">
+                    <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            Alur laporan
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title text-center"></h5>
+                        <p class="card-text">
+                            <ul>
+                                <li>isi form pengaduan sesuai dengan form disamping.</li>
+                                <li>setelah selesai mengisi, silakan klik tombol "submit" untuk mengirim pelaporan anda.</li>
+                               
+                                
+                            </ul>
+                        </p>
+                    </div>
+                </div>  
+                
+                
+
+    
+    
+</section>
+
+<footer class="bg-light py-5">
+    <div class="container"><div class="small text-center text-muted"><span>Copyright &copy; Lailatul - 2022</span></div></div>
+</footer>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+<!-- Third party plugin JS-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<!-- Core theme JS-->
+<script src="{{ url_for('static', filename= 'js/scripts.js') }}"></script>
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js" crossorigin="anonymous"></script>
+<!-- Scripts -->
+<script src="{{ url_for('static', filename= 'js/scripts.js') }}"></script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+    <!-- Google fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
+    <!-- Third party plugin CSS-->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{{ url_for ('static', filename='css/main.css') }}" rel="stylesheet" />
+    <link rel="shortcut icon" href="{{ url_for ('static' , filename='favicon.png') }}">
+    <title>tentang</title>
+</head>
+<body id="page-top">
+
+   <!-- Navigation-->
+   <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container">
+        <a class="navbar-brand" href="{{ url_for('index') }}">
+            <img src="{{ url_for('static', filename= 'img/logo.png') }}" width="30" height="30" class="d-inline-block align-top">
+        </a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto my-2 my-lg-0">
+                <li class="nav-item"><a class="nav-link" href="/dashboard-user">Lihat data Klasifikasi</a></li>
+                <li class="nav-item"><a class="nav-link" href="/login-user">Form pengaduan</a></li>
+                <li class="nav-item"><a class="nav-link" href="/artikel">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="/tentang">tentang</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- Masthead-->
+    <section class="page-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="mt-0">Tentang</h2>
+                    <hr class="divider my-4" />
+                    <p class="text-muted mb-5">
+                        Kabupaten Indramayu adalah sebuah kabupaten di Provinsi Jawa Barat, Indonesia. Ibu kotanya adalah Indramayu. Nama Indramayu berasal dari kecantikan Istri Raden Arya Wiralodra yang bernama Nyi Endang Darma Ayu, yaitu salah satu pendiri Indramayu abad 1527 M. Nyi Endang Darma Ayu sebutan Darma Ayu lama kelamaan menjadi Dermayu dan In Darmayu, kemudian menjadi Indramayu.
+                    </p>
+                    <p class="text-muted mb-5">
+                    Jika ingin melakukan pelaporan silakan klik menu form pengaduan dan login terlebih dahulu. Terimakasih!
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="footer bg-light py-5">
+        <div class="container"><div class="small text-center text-muted">Copyright © 2022</div></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="{{ url_for('static', filename='js/scripts.js' ) }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js" crossorigin="anonymous"></script>
+    <script>
+        bsCustomFileInput.init()
+
+        var btn = document.getElementById('btnResetForm')
+        var form = document.querySelector('form')
+        btn.addEventListener('click', function () {
+            form.reset()
+        })
+    </script>
+</body>
+</html>
